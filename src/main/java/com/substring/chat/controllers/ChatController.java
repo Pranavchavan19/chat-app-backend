@@ -6,7 +6,6 @@ import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.substring.chat.entities.Message;
@@ -15,7 +14,7 @@ import com.substring.chat.playload.MessageRequest;
 import com.substring.chat.repositories.RoomRepository;
 
 @Controller
-@CrossOrigin("https://chat-app-frontend-beryl-nu.vercel.app")
+// @CrossOrigin("https://chat-app-frontend-beryl-nu.vercel.app")
 public class ChatController {
 
 
