@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"  # Exposing MongoDB on default port 27017
+    volumes:
+      - mongodb-data:/data/db  # Persist MongoDB data
+
+  backend:
+    build: .
+    container_name: chat-app-backend
+    depends_on:
+      - mongo  # Ensure MongoDB is up before starting the backend
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/chatapp  # Spring Boot app connection string to MongoDB
+    ports:
+      - "8080:8080"  # Expose Spring Boot application on port 8080
+
+volumes:
+  mongodb-data:
