@@ -14,7 +14,7 @@ import com.substring.chat.playload.MessageRequest;
 import com.substring.chat.repositories.RoomRepository;
 
 @Controller
-// @CrossOrigin("https://chat-app-frontend-beryl-nu.vercel.app")
+@CrossOrigin("https://chat-app-frontend-beryl-nu.vercel.app")
 public class ChatController {
 
 

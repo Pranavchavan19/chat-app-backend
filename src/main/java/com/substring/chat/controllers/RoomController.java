@@ -18,7 +18,7 @@ import com.substring.chat.repositories.RoomRepository;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-// @CrossOrigin("https://chat-app-frontend-beryl-nu.vercel.app")
+@CrossOrigin("https://chat-app-frontend-beryl-nu.vercel.app")
 public class RoomController {
 
     private RoomRepository roomRepository;
