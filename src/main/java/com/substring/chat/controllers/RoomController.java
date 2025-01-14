@@ -31,24 +31,48 @@ public class RoomController {
     }
 
     //create room
+    // @PostMapping
+    // public ResponseEntity<?> createRoom(@RequestBody String roomId) {
+
+    //     if (roomRepository.findByRoomId(roomId) != null) {
+    //         //room is already there
+    //         return ResponseEntity.badRequest().body("Room already exists!");
+
+    //     }
+
+
+    //     //create new room
+    //     Room room = new Room();
+    //     room.setRoomId(roomId);
+    //     Room savedRoom = roomRepository.save(room);
+    //     return ResponseEntity.status(HttpStatus.CREATED).body(room);
+
+
+    // }
+
     @PostMapping
-    public ResponseEntity<?> createRoom(@RequestBody String roomId) {
-
+public ResponseEntity<?> createRoom(@RequestBody String roomId) {
+    try {
         if (roomRepository.findByRoomId(roomId) != null) {
-            //room is already there
+            // room is already there
             return ResponseEntity.badRequest().body("Room already exists!");
-
         }
 
-
-        //create new room
+        // create new room
         Room room = new Room();
         room.setRoomId(roomId);
         Room savedRoom = roomRepository.save(room);
-        return ResponseEntity.status(HttpStatus.CREATED).body(room);
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedRoom);
 
-
+    } catch (Exception e) {
+        // Log the error for debugging
+        System.err.println("Error creating room: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body("Error creating room: " + e.getMessage());
     }
+}
+
 
 
     //get room: join
